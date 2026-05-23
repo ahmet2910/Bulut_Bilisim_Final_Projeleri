@@ -35,3 +35,21 @@ Bu projede, yüksek trafik altında çökmesini engellemek amacıyla otomatik ö
 2. **Sistem Şablonunun Alınması (AMI):** Sunucunun çalışan kararlı halinin imajı (`E-Ticaret-Sunucu-Kalibi`) alınarak otomasyon sistemine hazır hale getirilmiştir.
 3. **Auto Scaling Grubunun Kurulması:** Minimum 1, Maksimum 3 sunucu sınırları belirlenerek bir Auto Scaling Grubu (ASG) yapılandırılmıştır.
 4. **Yük Testi ve Ölçeklendirme Simülasyonu:** Sistemde yapay bir yoğunluk simüle edilerek "Desired Capacity" değeri 3'e çıkarılmıştır. AWS, insan müdahalesi olmadan otomatik olarak 2 yeni Ubuntu sunucusunu saniyeler içinde başarıyla devreye almıştır.
+
+
+## Proje 5: AWS IoT Core ile Akıllı Şehir Trafik Simülasyonu
+
+###  Proje Kapsamı ve Amacı
+Bu projede, akıllı şehir vizyonuna uygun olarak Ankara genelindeki kavşakların trafik yoğunluğunu ve araç sayılarını anlık olarak izleyen sanal bir IoT sensör ağı simüle edilmiştir. Cihaz güvenliği ve veri gizliliği AWS IoT sertifikaları ile optimize edilmiştir.
+
+###  Kullanılan Teknolojiler
+* **Simülasyon Dili:** Python 3 (Jupyter Notebook ortamı)
+* **Protokol:** MQTT (Message Queuing Telemetry Transport)
+* **Bulut Platformu:** AWS IoT Core
+* **Güvenlik Altyapısı:** X.509 Cihaz Sertifikaları & AWS IoT Policies
+
+###  Adım Adım Gerçekleştirilen Çalışmalar
+1. **Sanal Nesne (Thing) Kaydı:** AWS IoT Core üzerinde `Ankara-Trafik-Sensoru` adında sanal bir nesne oluşturulmuş ve cihaza özel X.509 güvenlik sertifikaları ile anahtarlar üretilmiştir.
+2. **Güvenlik ve Yetkilendirme (Policy):** Nesnenin `ankara/trafik` konusuna (topic) veri basabilmesi için `iot:*` yetkilerine sahip esnek bir güvenlik politikası tanımlanmıştır.
+3. **Python MQTT İstemcisi:** `AWSIoTPythonSDK` kullanılarak sertifikalı bir bağlantı scripti hazırlanmıştır. Kod; Kızılay, Tunalı, Çankaya gibi bölgelerden rastgele ama gerçekçi trafik verilerini (Yoğunluk %, Araç Sayısı) JSON formatında üretmektedir.
+4. **Canlı Veri Takibi:** Jupyter üzerinde tetiklenen simülasyon, AWS IoT Core üzerindeki "MQTT Test Client" ekranından anlık olarak doğrulanmış ve verilerin buluta sıfır kayıpla aktığı gözlemlenmiştir.
