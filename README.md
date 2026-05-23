@@ -22,15 +22,15 @@
 
 ## Proje 4: E-Ticaret ve Auto Scaling Uygulaması
 
-### 📌 Proje Kapsamı ve Amacı
+###  Proje Kapsamı ve Amacı
 Bu projede, yüksek trafik altında çökmesini engellemek amacıyla otomatik ölçeklendirme (Auto Scaling) altyapısına sahip bir e-ticaret web sunucusu mimarisi kurulmuştur. Sistem, gelen anlık yük durumuna göre sunucu sayısını dinamik olarak artırıp azaltabilmektedir.
 
-### 🛠️ Kullanılan Teknolojiler
+###  Kullanılan Teknolojiler
 * **İşletim Sistemi:** Ubuntu Server (Linux)
 * **Web Sunucusu:** Apache2 (HTTP)
 * **Bulut Platformu:** AWS (EC2, AMI, Auto Scaling Groups)
 
-### 📅 Adım Adım Gerçekleştirilen Çalışmalar
+###  Adım Adım Gerçekleştirilen Çalışmalar
 1. **Ana Sunucunun Kurulması:** AWS eu-north-1 bölgesinde bir adet Ubuntu EC2 sunucusu ayağa kaldırılmış ve içine Apache2 web sunucusu kurularak temel bir e-ticaret ana sayfası entegre edilmiştir.
 2. **Sistem Şablonunun Alınması (AMI):** Sunucunun çalışan kararlı halinin imajı (`E-Ticaret-Sunucu-Kalibi`) alınarak otomasyon sistemine hazır hale getirilmiştir.
 3. **Auto Scaling Grubunun Kurulması:** Minimum 1, Maksimum 3 sunucu sınırları belirlenerek bir Auto Scaling Grubu (ASG) yapılandırılmıştır.
